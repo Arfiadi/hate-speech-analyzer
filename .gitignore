@@ -1,0 +1,45 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# --- Project Specific (Hate Speech Analyzer) ---
+
+# Abaikan folder log atau temporary jika ada
+logs/
+temp/
+*.log
+
+# Catatan terkait dataset: 
+# Jika ukuran file CSV/data sangat besar (>50MB), 
+# sebaiknya jangan di-push ke GitHub agar tidak membebani repository.
+# Hapus tanda pagar (#) di bawah ini jika ingin mengabaikan folder data:
+data/raw/*.csv
+data/processed/*.csv
+models/*.pkl
+models/*.h5
