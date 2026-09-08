@@ -7,6 +7,7 @@
 | **Mata Kuliah** | Workshop Proyek Sistem Cerdas |
 | **Dosen** | Dr. Selvia Ferdiana Kusuma, M.Kom |
 | **Kelompok** | Kelompok 6 (5 anggota) |
+| **Anggota** | Arfi, Naufal, Shafa, Sovia, Azzuhra |
 | **Metode** | Transformer — **XLM-RoBERTa** |
 | **Dataset** | `indotoxic2024` (IndoDiscourse) — 28.448 baris teks media sosial berbahasa Indonesia |
 | **Repositori** | [hate-speech-analyzer](file:///d:/ARFI/Kuliah/Project/project-semester5/hate-speech-analyzer) |

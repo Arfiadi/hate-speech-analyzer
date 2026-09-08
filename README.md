@@ -40,7 +40,7 @@ hate-speech-analyzer/
 │       ├── indotoxic2024_annotator_demographic_data_v2_final.jsonl
 │       └── IndoDiscourse_Toxicity_Related_Experiment_Code.ipynb   # Notebook eksperimen acuan resmi
 ├── docs/
-│   ├── Keterangan_Proyek_Hate_Speech_Analyzer.md             # Kontrak kuliah & detail panduan proyek
+│   ├── Project_context.md             # Kontrak kuliah & detail panduan proyek
 │   └── Data_Understanding_Guide.md                           # Panduan problem & pemahaman data untuk tim
 ├── download_data.py                                          # Script otomatis pengunduh dataset resmi
 └── README.md                                                 # Dokumentasi utama repositori

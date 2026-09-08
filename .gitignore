@@ -40,6 +40,7 @@ temp/
 # sebaiknya jangan di-push ke GitHub agar tidak membebani repository.
 # Hapus tanda pagar (#) di bawah ini jika ingin mengabaikan folder data:
 data/raw/*.csv
+data/raw/*.jsonl
 data/processed/*.csv
 models/*.pkl
 models/*.h5
