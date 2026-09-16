@@ -67,41 +67,39 @@ Dataset terdiri dari 2 file utama di dalam direktori `data/raw/`:
 | 1 | `text_id` | String | String | `"1-1"`, `"1-100"`, dll. | **Identifier** | ID unik untuk melacak setiap baris teks. |
 | 2 | `annotators_id` | String | List of Strings | `"['7', '15']"`, `"['10', '18']"` | **Metadata Anotator** | Daftar ID annotator yang menilai teks ini (berelasi dengan data demografi). |
 | 3 | `text` | String | String | Teks berbahasa Indonesia | **Fitur Utama ($X$)** | Konten teks postingan media sosial / komentar yang akan dianalisis model. |
-| 4 | `initial_paragraph` | String | String / NaN | Teks konteks atau `NaN` (hanya 1.669 terisi) | **Fitur Konteks Tambahan** | Paragraf pembuka / konteks jika teks diambil dari artikel berita panjang. |
-| 5 | `topic` | String | String | `"Disabilitas"`, `"Tionghoa"`, `"Jewish"`, `"Rohingya"`, `"UNKNOWN"`, dll. | **Fitur Metadata / Analisis Sub-Domain** | Kategori isu sensitif yang dibahas dalam teks. |
+| 4 | `initial_paragraph` | String | String / NaN | Teks konteks atau `NaN` | **Fitur Konteks Tambahan** | Paragraf pembuka / konteks jika teks diambil dari artikel berita panjang. |
+| 5 | `topic` | String | String | `"Disabilitas"`, `"Tionghoa"`, `"UNKNOWN"`, dll. | **Fitur Metadata / Analisis Sub-Domain** | Kategori isu sensitif yang dibahas dalam teks. |
 | 6 | `toxicity` | String | List of Strings | `"['0', '0']"`, `"['1', '0']"`, `"['1', '1']"` | **Target Task Utama ($Y_{biner}$)** | Nilai `1` = Toksik / Ujaran Kebencian, `0` = Non-toksik. |
-| 7 | `identity_attack` | String | List of Strings | `"['0', '0']"`, `"['1', '0']"`, `"['1', '1']"` | **Target Task Multi-Label ($Y_{multi, 1}$)** | Nilai `1` jika teks menyerang SARA/identitas kelompok. |
-| 8 | `threat_incitement_to_violence` | String | List of Strings | `"['0', '0']"`, `"['1', '0']"`, `"['1', '1']"` | **Target Task Multi-Label ($Y_{multi, 2}$)** | Nilai `1` jika teks memuat ancaman/ajakan kekerasan fisik. |
-| 9 | `insults` | String | List of Strings | `"['0', '0']"`, `"['1', '0']"`, `"['1', '1']"` | **Target Task Multi-Label ($Y_{multi, 3}$)** | Nilai `1` jika teks memuat cercaan, cemooh, hinaan personal/kelompok. |
-| 10 | `profanity_obscenity` | String | List of Strings | `"['0', '0']"`, `"['1', '0']"`, `"['1', '1']"` | **Target Task Multi-Label ($Y_{multi, 4}$)** | Nilai `1` jika teks menggunakan makian/kata-kata kotor. |
-| 11 | `sexually_explicit` | String | List of Strings | `"['0', '0']"`, `"['1', '0']"`, `"['1', '1']"` | **Target Task Multi-Label ($Y_{multi, 5}$)** | Nilai `1` jika teks mengandung muatan seksual vulgar / cabul. |
+| 7 | `identity_attack` | String | List of Strings | `"['0', '0']"`, `"['1', '1']"` | **Target Task Multi-Label ($Y_{multi, 1}$)** | Nilai `1` jika teks menyerang SARA/identitas kelompok. |
+| 8 | `threat_incitement_to_violence` | String | List of Strings | `"['0', '0']"`, `"['1', '1']"` | **Target Task Multi-Label ($Y_{multi, 2}$)** | Nilai `1` jika teks memuat ancaman/ajakan kekerasan fisik. |
+| 9 | `insults` | String | List of Strings | `"['0', '0']"`, `"['1', '1']"` | **Target Task Multi-Label ($Y_{multi, 3}$)** | Nilai `1` jika teks memuat cercaan, cemooh, hinaan personal/kelompok. |
+| 10 | `profanity_obscenity` | String | List of Strings | `"['0', '0']"`, `"['1', '1']"` | **Target Task Multi-Label ($Y_{multi, 4}$)** | Nilai `1` jika teks menggunakan makian/kata-kata kotor. |
+| 11 | `sexually_explicit` | String | List of Strings | `"['0', '0']"`, `"['1', '1']"` | **Target Task Multi-Label ($Y_{multi, 5}$)** | Nilai `1` jika teks mengandung muatan seksual vulgar / cabul. |
 | 12 | `polarized` | String | List of Strings | `"['0', '0']"`, `"['1', '1']"` | **Fitur Tambahan / Pembantu** | Nilai `1` jika diskursus memicu/mengandung polarisasi pandangan sosial-politik. |
 | 13 | `related_to_election_2024` | String | List of Strings | `"['0', '0']"`, `"['1', '1']"` | **Fitur Metadata Konteks** | Nilai `1` jika teks berkaitan dengan topik Pemilu Presiden 2024. |
 | 14 | `is_noise_or_spam_text` | String | List of Strings | `"['0', '0']"`, `"['1', '1']"` | **Filter Data (Data Cleaning)** | Nilai `1` jika teks merupakan iklan, spam bot, teks rusak, atau tidak bermakna. |
-
----
 
 ### Tabel 2: Kamus Variabel Dataset Profil Annotator (`indotoxic2024_annotator_demographic_data_v2_final.csv`)
 
 | No | Nama Kolom | Tipe Data | Nilai yang Mungkin | Peran dalam Proyek |
 |:---:|---|---|---|---|
 | 1 | `annotator_id` | Integer / String | `1` hingga `29` | **Primary Key** (relasi ke `annotators_id` pada dataset utama). |
-| 2 | `ethnicity` | String | Sunda (4), Tionghoa (3), Bugis (3), Minang (3), Jawa (2), Bali (3), Aceh (2), Batak (2), Arab, Madura, Dayak, Melayu, Ternate, Sasak, Tobelo. | Analisis bias demografi & representasi budaya. |
-| 3 | `religion` | String | Islam (18), Hindu (3), Kristen (2), Katolik (2), Kepercayaan Lokal (1), Syiah (1), Ahmadiyah (1), Buddha (1). | Analisis persepsi isu keagamaan/SARA. |
-| 4 | `gender` | String | `F` (Perempuan: 17), `M` (Laki-laki: 12). | Analisis bias gender terhadap toksisitas/pelecehan. |
-| 5 | `age` | Integer | Rentang umur 19 hingga 55+ tahun. | Pengelompokan generasi (Gen Z, Milenial, Gen X). |
-| 6 | `domisili` | String | Kota/Provinsi domisili annotator. | Representasi geografis wilayah Indonesia. |
-| 7 | `pendidikan terakhir` | String | S1 (12), SMA (8), S2 (6), Diploma (2), S3 (1). | Tingkat literasi & pendidikan penilai. |
-| 8 | `status pekerjaan` | String | Bekerja (18), Pelajar/Mahasiswa (8), Tidak Bekerja (2), Ibu Rumah Tangga (1). | Latar belakang aktivitas sosial-ekonomi penilai. |
-| 9 | `president vote leaning` | String / Integer | `1` (Anies-Imin), `2` (Prabowo-Gibran), `3` (Ganjar-Mahfud), `"Tidak ada"`. | Variabel analisis bias polarisasi politik. |
+| 2 | `ethnicity` | String | Sunda, Tionghoa, Bugis, Minang, dll. | Analisis bias demografi & representasi budaya. |
+| 3 | `religion` | String | Islam, Hindu, Kristen, Katolik, dll. | Analisis persepsi isu keagamaan/SARA. |
+| 4 | `gender` | String | `F` (Perempuan), `M` (Laki-laki). | Analisis bias gender terhadap toksisitas. |
+| 5 | `age` | Integer | Rentang umur 19 hingga 55+ tahun. | Pengelompokan generasi. |
+| 6 | `domisili` | String | Kota/Provinsi domisili annotator. | Representasi geografis. |
+| 7 | `pendidikan terakhir` | String | S1, SMA, S2, Diploma, S3. | Tingkat literasi penilai. |
+| 8 | `status pekerjaan` | String | Bekerja, Pelajar, dll. | Latar belakang aktivitas sosial-ekonomi. |
+| 9 | `president vote leaning` | String / Integer | `1` (Anies-Imin), `2` (Prabowo-Gibran), `3` (Ganjar-Mahfud). | Variabel analisis bias polarisasi politik. |
 | 10 | `disability` | String | `"Tidak"`, `"Ya"` | Representasi perspektif kelompok disabilitas. |
-| 11 | `lgbt` | String | `"Tidak"`, `"Ya"` | Representasi perspektif kelompok minoritas gender/seksual. |
+| 11 | `lgbt` | String | `"Tidak"`, `"Ya"` | Representasi perspektif kelompok minoritas. |
 
 ---
 
-## 4. Struktur Data: Mengapa Format Anotasi Berupa List?
+## 4. Struktur Data & Mekanisme Agregasi (Majority Voting)
 
-Pada data mentah CSV, semua kolom label tersimpan sebagai string representasi list, contoh:
+Pada data mentah CSV, semua kolom label tersimpan sebagai *string* representasi *list*, contoh:
 ```text
 text_id: "1-100"
 annotators_id: "['7', '15']"
@@ -110,26 +108,40 @@ toxicity: "['1', '0']"
 insults: "['1', '0']"
 ```
 
-### Mengapa Berbentuk List?
-Karena satu teks dinilai oleh **lebih dari 1 annotator** secara independen:
-- Annotator ID `7` memberi label `1` (Toksik).
-- Annotator ID `15` memberi label `0` (Non-toksik).
+### Distribusi Jumlah Anotator per Teks
+Satu teks dinilai secara independen oleh sejumlah anotator. Berdasarkan analisis EDA, jumlah penilai untuk setiap baris sangat bervariasi:
+- **1 Anotator**: 15.748 teks (55,36%)
+- **2 Anotator**: 7.907 teks (27,79%)
+- **3 Anotator**: 2.352 teks (8,27%)
+- **4-19 Anotator**: Sisa ~8,5%
+
+> [!WARNING]
+> Karena **55,36% teks hanya memiliki 1 anotator**, nilai "mayoritas" untuk sebagian besar dataset ini sebenarnya tidak melibatkan konsensus (murni subjektivitas satu individu). Ini harus menjadi pertimbangan saat menganalisis bias model.
 
 ### Mekanisme Agregasi Konsensus (*Majority Voting*):
-Untuk mengubah list anotasi menjadi satu label biner untuk melatih model:
+Untuk mengubah list anotasi menjadi satu label biner untuk melatih model, kita menggunakan rata-rata (*mean*) penilaian:
 $$\text{Label Konsensus} = \begin{cases} 1, & \text{jika } \frac{\sum \text{vote}}{N} > 0.5 \\ 0, & \text{jika } \frac{\sum \text{vote}}{N} < 0.5 \\ \text{Disagreement / Tie (0.5)}, & \text{jika } \frac{\sum \text{vote}}{N} = 0.5 \end{cases}$$
 
 Contoh Kasus:
 * `['1', '1']` $\rightarrow$ Rata-rata 1.0 (> 0.5) $\rightarrow$ **Label 1**
 * `['0', '0']` $\rightarrow$ Rata-rata 0.0 (< 0.5) $\rightarrow$ **Label 0**
 * `['1', '1', '0']` $\rightarrow$ Rata-rata 0.67 (> 0.5) $\rightarrow$ **Label 1**
-* `['1', '0']` $\rightarrow$ Rata-rata 0.5 $\rightarrow$ **Disagreement (Tie)** $\rightarrow$ *Strategi standar: di-drop dari data latih atau dipisahkan untuk analisis ambiguitas.*
+* `['1', '0']` $\rightarrow$ Rata-rata 0.5 $\rightarrow$ **Disagreement (Tie)** $\rightarrow$ *Teks ambigu ini disarankan untuk di-drop dari data evaluasi (test set).*
 
 ---
 
-## 5. Distribusi & Statistik Kritis Variabel
+## 5. Hasil Exploratory Data Analysis (EDA) & Karakteristik Data
 
-Berdasarkan hasil kalkulasi empiris pada seluruh 28.448 baris data:
+Bagian ini memuat temuan faktual komprehensif dari *notebook* EDA yang penting sebagai dasar perancangan *pipeline* ML.
+
+### 5.1 Kualitas Data & Deteksi Duplikat
+- **Missing Values**: Terdapat 1 baris teks kosong (NaN) dan 26.779 baris (94,13%) tidak memiliki `initial_paragraph`. *(Praktik terbaik: selalu terapkan `dropna(subset=['text'])` sebelum komputasi teks).*
+- **Duplikat Eksak**: 2.274 baris (7,99%).
+- **Near-Duplicates**: 2.449 baris (8,61%) terdeteksi setelah teks dinormalisasi (lowercasing, masking URL & mention, hapus tanda baca).
+- **Konflik Label (*Label Contradiction*)**: Ditemukan **403 teks unik** yang berduplikasi di dataset namun memiliki penilaian kelas (`toxicity`) yang saling bertolak belakang antar kemunculannya. *Ini berpotensi memicu data leakage jika tidak ditangani sebelum data splitting.*
+
+### 5.2 Distribusi Kelas & Statistik Imbalance
+Berdasarkan hasil kalkulasi empiris pada seluruh baris data:
 
 | Variabel | Jumlah Kelas 0 | Jumlah Kelas 1 | Jumlah Disagreement | Rasio Imbalance |
 |---|:---:|:---:|:---:|:---:|
@@ -139,10 +151,23 @@ Berdasarkan hasil kalkulasi empiris pada seluruh 28.448 baris data:
 | `insults` | 26.501 (93.2%) | 749 (2.6%) | 1.198 (4.2%) | 1 : 35 |
 | `profanity_obscenity` | 27.779 (97.6%) | 261 (0.9%) | 408 (1.4%) | 1 : 106 |
 | `threat_incitement_to_violence` | 27.662 (97.2%) | 88 (0.3%) | 698 (2.5%) | 1 : 314 |
-| `sexually_explicit` | 28.326 (99.6%) | 50 (0.2%) | 72 (0.3%) | 1 : 566 |
+| `sexually_explicit` | 28.326 (99.6%) | 50 (0.2%) | 72 (0.3%) | 1 : 567 |
 | `is_noise_or_spam_text` | 26.166 (92.0%) | 1.371 (4.8%) | 911 (3.2%) | 1 : 19 |
 | `related_to_election_2024` | 25.587 (89.9%) | 1.932 (6.8%) | 929 (3.3%) | 1 : 13 |
 
----
+### 5.3 Analisis Panjang Teks & Elemen Digital
+- **Distribusi Panjang Kata**: Rata-rata 44 kata, *median* 22 kata. Persentil ke-95 berada pada 174 kata.
+- **Perbedaan per Kelas**:
+  - Teks **Non-Toxic** (0): Rata-rata 45,5 kata.
+  - Teks **Toxic** (1): Rata-rata 33,2 kata.
+  - *Insight*: Teks toksik rata-rata lebih pendek, namun median kedua kelas hampir identik (21-22 kata).
+- **Elemen Media Sosial**:
+  - *Tanda baca berlebih* (`!?.,` berulang $\ge 3\times$) muncul **3x lebih sering** pada kelas Toxic (9,97%) dibandingkan Non-Toxic (3,58%). Hal ini menjadikannya fitur sintaksis yang kuat.
+  - *Hashtag (#)* lebih dominan pada teks Non-Toxic (27,90% vs 17,02%), umumnya digunakan dalam diskusi kampanye reguler.
 
+### 5.4 Statistik Leksikal & Kosakata
+- **Lexical Diversity**: Cukup rendah (0,0683), dengan 39.219 token (46,2% vocabulary) berupa *Hapax Legomena* (kata yang hanya muncul tepat satu kali di seluruh corpus).
+- **Kata Negasi**: Ditemukan >11.000 kemunculan kata penidak seperti `tidak` (5.266), `bukan` (1.446), `jangan` (1.040), dan `gak` (1.059).
 
+> [!IMPORTANT]
+> Analisis leksikal ini menjadi bukti kuat bahwa teknik **Stopwords Removal sangat dilarang** pada pipeline ini. Menghapus puluhan ribu kata negasi akan merusak sentimen asli teks dan mengganggu *contextual attention* model berbasis Transformer seperti XLM-RoBERTa.
