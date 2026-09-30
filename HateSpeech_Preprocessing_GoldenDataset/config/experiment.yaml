@@ -1,0 +1,29 @@
+project:
+  random_seed: 42
+
+input:
+  id_column: text_id
+  text_column: text
+  toxicity_column: toxicity
+  spam_column: is_noise_or_spam_text
+
+filters:
+  min_characters: 4
+  min_tokens: 2
+  exclude_spam: true
+  exclude_spam_tie: true
+
+candidates:
+  text_cleaning: [raw, heavy, minimal]
+  deduplication: [keep, drop, pool]
+  tie_handling: [drop, soft, downweight]
+  annotator_strategy: [equal, downweight_single, multi_only, curriculum]
+  single_annotator_weight: 0.70
+  tie_downweight: 0.50
+
+evaluator:
+  validation_folds: 3
+  max_features: 20000
+  alpha: 0.0005
+  max_iter: 2000
+  threshold: 0.50
