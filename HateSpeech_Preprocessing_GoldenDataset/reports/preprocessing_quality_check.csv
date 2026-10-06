@@ -1,0 +1,10 @@
+split,variant,row_count,same_row_count_as_raw,same_text_id_as_raw,same_label_as_raw,status
+train,p_a_raw,7073,True,True,True,PASS
+train,p_b_heavy,7073,True,True,True,PASS
+train,p_c_minimal,7073,True,True,True,PASS
+validation,p_a_raw,884,True,True,True,PASS
+validation,p_b_heavy,884,True,True,True,PASS
+validation,p_c_minimal,884,True,True,True,PASS
+test,p_a_raw,885,True,True,True,PASS
+test,p_b_heavy,885,True,True,True,PASS
+test,p_c_minimal,885,True,True,True,PASS

@@ -1,0 +1,4 @@
+split,row_count,url_masked_count,raw_url_remaining,mention_masked_count,raw_mention_remaining,repeated_char_remaining,repeated_punctuation_remaining,empty_text_count,URL_token_count,USER_token_count
+train,7073,0,0,0,0,0,0,0,98,1683
+validation,884,0,0,0,0,0,0,0,18,258
+test,885,0,0,0,0,0,0,0,24,158
